@@ -6,7 +6,7 @@ export default () => {
   return (
     <Layout title="Home">
       <section className="container mx-auto py-64">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-3xl lg:text-5xl font-bold">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-primary-dark">
             Ryan Washburne
           </span>
