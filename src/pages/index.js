@@ -1,43 +1,48 @@
-import React from "react";
+import React from 'react'
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import catAndHumanIllustration from "../images/cat-and-human-illustration.svg";
+import Layout from '../components/layout'
 
-function IndexPage() {
+export default () => {
   return (
-    <Layout>
-      <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
-        title="Home"
-      />
-
-      <section className="text-center">
-        <img
-          alt="Cat and human sitting on a couch"
-          className="block w-1/2 mx-auto mb-8"
-          src={catAndHumanIllustration}
-        />
-
-        <h2 className="inline-block p-3 mb-4 text-2xl font-bold bg-yellow-400">
-          Hey there! Welcome to your first Gatsby site.
-        </h2>
-
-        <p className="leading-loose">
-          This is a barebones starter for Gatsby styled using{` `}
+    <Layout title="Home">
+      <section className="container mx-auto py-64">
+        <h1 className="text-5xl font-bold">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-primary-dark">
+            Ryan Washburne
+          </span>
+        </h1>
+        <h2 className="text-lg text-gray-500">Analyst at Deloitte</h2>
+        <div className="flex text-xs text-gray-500 mt-2">
           <a
-            className="font-bold text-gray-900 no-underline"
-            href="https://tailwindcss.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://linkedin.com/in/ryanwashburne"
+            className="underline mr-4 hover:text-gray-600"
           >
-            Tailwind CSS
+            LinkedIn
           </a>
-          , a utility-first CSS framework.
-        </p>
+          <a
+            href="mailto:ryan.washburne@gmail.com?subject=Hello"
+            className="underline hover:text-gray-600"
+          >
+            Email
+          </a>
+        </div>
       </section>
+      {/* <section className="container mx-auto">
+        <p className="transform -rotate-90 origin-top-right text-right absolute left-0 text-xs text-gray-500">
+          Selected Work
+        </p>
+        <div className="flex overflow-x-scroll">
+          <div
+            className="bg-blue-200 rounded h-64 mr-16"
+            style={{ minWidth: 900 }}
+          />
+          <div
+            className="bg-green-200 rounded h-64"
+            style={{ minWidth: 900 }}
+          />
+          <div className="bg-red-200 rounded h-64" style={{ minWidth: 900 }} />
+        </div>
+      </section> */}
     </Layout>
-  );
+  )
 }
-
-export default IndexPage;

@@ -1,36 +1,39 @@
 {
-  "name": "gatsby-starter-tailwind",
-  "description": "Gatsby starter styled with Tailwind",
-  "version": "4.0.0",
-  "author": "Taylor Bryant <taylor@bryant.io>",
+  "name": "washburne-dev",
+  "description": "Personal site for Ryan Washburne",
+  "version": "1.0.0",
+  "author": "Ryan Washburne <ryan.washburne@gmail.com>",
   "dependencies": {
     "gatsby": "2.24.47",
     "gatsby-plugin-manifest": "2.4.22",
     "gatsby-plugin-offline": "3.2.23",
     "gatsby-plugin-postcss": "2.3.11",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "3.3.10",
-    "gatsby-plugin-sharp": "2.6.27",
+    "gatsby-plugin-sharp": "^2.6.27",
+    "gatsby-remark-autolink-headers": "^2.3.11",
+    "gatsby-remark-copy-linked-files": "^2.3.12",
+    "gatsby-remark-external-links": "^0.0.4",
+    "gatsby-remark-images": "^3.3.25",
+    "gatsby-remark-prismjs": "^3.5.10",
+    "gatsby-remark-responsive-iframe": "^2.4.12",
+    "gatsby-remark-smartypants": "^2.3.10",
+    "gatsby-source-filesystem": "^2.3.24",
+    "gatsby-transformer-remark": "^2.8.28",
+    "gatsby-transformer-sharp": "^2.5.13",
+    "prismjs": "^1.21.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0"
   },
-  "keywords": [
-    "gatsby",
-    "tailwind",
-    "tailwindcss",
-    "purgecss"
-  ],
-  "license": "MIT",
   "scripts": {
     "analyze:lint": "eslint --ext .jsx --ext .js .",
     "analyze:prettier": "prettier --list-different \"**/*.{css,js,jsx,json,md}\"",
     "analyze": "npm run analyze:lint && npm run analyze:prettier",
-
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write \"**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
-
     "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
@@ -50,13 +53,6 @@
     "eslint-plugin-react": "7.20.6",
     "gatsby-plugin-eslint": "2.0.8",
     "prettier": "2.0.5",
-    "tailwindcss": "1.6.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind"
-  },
-  "bugs": {
-    "url": "https://github.com/taylorbryant/gatsby-starter-tailwind/issues"
+    "tailwindcss": "^1.7.3"
   }
 }
