@@ -16,8 +16,10 @@ export default ({ title = '', children }) => {
         </Link>
         <Link to="/impossible">Impossible</Link>
       </header>
-
-      <main className="pb-16">{children}</main>
+      <main>{children}</main>
+      {/* <footer className="mt-32 h-screen bg-red-100">
+        <p>Footer</p>
+      </footer> */}
     </div>
   )
 }

@@ -18,7 +18,7 @@ module.exports = {
         short_name: `washburne-dev`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.primary,
+        theme_color: fullConfig.theme.colors.primary.default,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`,
       },
@@ -40,6 +40,27 @@ module.exports = {
       options: {
         name: `markdown`,
         path: `${__dirname}/src/md`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/src/md/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/md/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -81,6 +102,14 @@ module.exports = {
             variants: [400, 700],
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `GCMS`,
+        fieldName: `gcms`,
+        url: `https://api-us-west-2.graphcms.com/v2/cke7lwawykh9w01xi3c8qavzk/master`,
       },
     },
     `gatsby-plugin-offline`,

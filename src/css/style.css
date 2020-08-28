@@ -3,26 +3,34 @@
 
 html {
   @apply font-sans;
+  scroll-behavior: smooth;
 }
 a {
   @apply underline;
   @apply text-gray-600;
-  @apply border;
-  @apply border-dashed;
-  @apply border-transparent;
-  @apply rounded;
-  @apply outline-none;
 }
 a:hover {
   @apply text-gray-700;
 }
-a:focus {
-  @apply border-gray-500;
-}
-a:active {
-  @apply border-transparent;
-}
 
 @tailwind components;
+
+.animated {
+  /* background-size: 200%; */
+  /* animation: gradient 8s ease infinite; */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /*! purgecss end ignore */
 @tailwind utilities;

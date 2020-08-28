@@ -25,16 +25,25 @@ module.exports = {
         },
         accent: {
           dark: theme.colors.orange[700],
-          default: theme.colors.orange[500],
-          light: theme.colors.orange[400],
+          default: theme.colors.orange[400],
+          light: theme.colors.orange[300],
         },
         secondary: {
           default: theme.colors.gray[400],
         },
       },
+      scale: {
+        '101': '1.01',
+        '99': '0.99',
+      },
     },
   },
-  variants: {},
+  variants: {
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+  },
   // https://github.com/tailwindcss/custom-forms
   plugins: [require('@tailwindcss/custom-forms')],
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
 }
