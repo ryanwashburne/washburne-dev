@@ -43,7 +43,6 @@ export default () => {
       }
     }
   `)
-  console.log(projects, works)
 
   const contact = [
     {
@@ -62,9 +61,12 @@ export default () => {
 
   return (
     <div className="relative">
-      <div className="py-8 lg:h-screen animated bg-gradient-to-br from-primary to-accent text-white relative">
+      <div
+        className="lg:h-screen animated bg-gradient-to-br from-primary to-accent text-white relative flex items-center"
+        style={{ minHeight: 600 }}
+      >
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
-          <div className="flex items-center">
+          <div className="flex items-center justify-center text-center lg:text-left">
             <motion.div
               variants={{
                 start: {
@@ -122,7 +124,7 @@ export default () => {
                 }}
                 initial="start"
                 animate="end"
-                className="mt-4 flex items-center"
+                className="mt-4 flex items-center justify-center lg:justify-start"
               >
                 {contact.map(({ icon: Icon, url }, i) => {
                   return (
@@ -149,7 +151,7 @@ export default () => {
               </motion.div>
             </motion.div>
           </div>
-          <div className="pr-16 flex items-center">
+          <div className="flex items-center">
             <motion.div
               animate={{
                 opacity: [0, 1],
@@ -187,9 +189,13 @@ export default () => {
         {projects.map(({ title, url, tags }, i) => {
           return (
             <Animated key={i} className="shadow p-4 mb-12">
-              <h3 className="text-4xl font-bold">{title}</h3>
-              <a href={url}>Website</a>
-              <p>{tags.join(', ')}</p>
+              <h3 className="text-xl lg:text-4xl font-bold break-words">
+                {title}
+              </h3>
+              <a href={url} className="block text-gray-600 mb-4">
+                Website
+              </a>
+              <p className="uppercase text-xs">{tags.join(', ')}</p>
             </Animated>
           )
         })}
@@ -199,9 +205,11 @@ export default () => {
         {works.map(({ company, position, tags }, i) => {
           return (
             <Animated key={i} className="shadow p-4 mb-12">
-              <h3 className="text-4xl font-bold">{company}</h3>
-              <p>{position}</p>
-              <p>{tags.join(', ')}</p>
+              <h3 className="text-xl lg:text-4xl font-bold break-words">
+                {company}
+              </h3>
+              <p className="text-gray-600 mb-4">{position}</p>
+              <p className="uppercase text-xs">{tags.join(', ')}</p>
             </Animated>
           )
         })}
