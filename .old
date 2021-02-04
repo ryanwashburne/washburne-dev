@@ -1,0 +1,4 @@
+GOOGLE_OAUTH_CLIENT_ID=1073509442736-m0rjd8d5s4vule2jaghuik8j2vfik9jl.apps.googleusercontent.com
+GOOGLE_OAUTH_CLIENT_SECRET=-GvlPBH52yiWPAPQmSO9yB-7
+GOOGLE_DRIVE_FOLDER_ID=1zzPu8Bjr6_c4mlzF5UbosGDmpaHD6djv
+GOOGLE_DOCS_TOKEN={"access_token":"ya29.A0AfH6SMCWfSDhM8b8EwW-7QpCDJIo3g3iiSNYPeVXlTp5eB4JVLH_rUNjCgQZKaaESC2D3Og9tlFXyLSP85NlvEmc4t8TagDnwIWBEDUC0J9YpatPDpbjJm-bRu90Hic9XUjKJb0vvjXxNB8Xv7--1ALkSVwF","refresh_token":"1//06xysAAOXPYQhCgYIARAAGAYSNwF-L9Ir0bdiVXBB-AXTlPeZZFn9rtRyKTUqaPl9prlyHBbZ7JJuZEpoTCjGcgm9IG4EJKPLt5w","scope":"https://www.googleapis.com/auth/documents.readonly https://www.googleapis.com/auth/drive.metadata.readonly","token_type":"Bearer","expiry_date":1612397669127}

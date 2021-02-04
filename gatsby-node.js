@@ -1,38 +1,44 @@
-// exports.createPages = async ({ actions, graphql, reporter }) => {
-//   const { createPage } = actions
+const { resolve } = require('path')
 
-//   const blogTemplate = require.resolve(`./src/templates/blog.js`)
+exports.createPages = async ({
+  graphql,
+  actions: { createPage },
+  reporter,
+}) => {
+  const result = await graphql(
+    `
+      {
+        allGoogleDocs(filter: { document: { breadcrumb: { in: "blog" } } }) {
+          nodes {
+            document {
+              id
+              breadcrumb
+            }
+          }
+        }
+      }
+    `,
+  )
 
-//   const result = await graphql(`
-//     {
-//       allMarkdownRemark(
-//         filter: { frontmatter: { slug: { ne: "/impossible" } } }
-//         sort: { order: DESC, fields: [frontmatter___slug] }
-//       ) {
-//         edges {
-//           node {
-//             frontmatter {
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `)
+  if (result.errors) {
+    reporter.panic(result.errors)
+  }
 
-//   // Handle errors
-//   if (result.errors) {
-//     reporter.panicOnBuild(`Error while running GraphQL query.`)
-//     return
-//   }
+  try {
+    const { allGoogleDocs } = result.data
 
-//   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-//     createPage({
-//       path: `/blog/${node.frontmatter.slug}`,
-//       component: blogTemplate,
-//       context: {
-//         slug: node.frontmatter.slug,
-//       },
-//     })
-//   })
-// }
+    if (allGoogleDocs) {
+      allGoogleDocs.nodes.forEach(({ document: { id, breadcrumb } }) => {
+        createPage({
+          path: `/blog/${id}/${breadcrumb[breadcrumb.length - 1]}`,
+          component: resolve(`src/templates/blog.js`),
+          context: {
+            id,
+          },
+        })
+      })
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}

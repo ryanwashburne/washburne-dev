@@ -2,6 +2,7 @@ const resolveConfig = require('tailwindcss/resolveConfig')
 const tailwindConfig = require('./tailwind.config.js')
 
 const fullConfig = resolveConfig(tailwindConfig)
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -9,6 +10,14 @@ module.exports = {
     description: `Personal site for Ryan Washburne`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-107484926-3`,
+        anonymize: true,
+        respectDNT: true,
+      },
+    },
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
     {
@@ -38,29 +47,25 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown`,
-        path: `${__dirname}/src/md`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `blog`,
-        path: `${__dirname}/src/md/blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `projects`,
-        path: `${__dirname}/src/md/projects`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [`Kumbh Sans:regular,bold`],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-source-google-docs`,
+      options: {
+        folders: [process.env.GOOGLE_DRIVE_FOLDER_ID],
+        ignoredFolders: [`drafts`],
       },
     },
     {
@@ -70,48 +75,22 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
+              linkImagesToOriginal: false,
               maxWidth: 590,
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-smartypants`,
-          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-external-links`,
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`, // has to be last
         ],
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Prata`,
-            variants: [400, 700],
-          },
-          {
-            family: `Montserrat`,
-            variants: [400, 700],
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GCMS`,
-        fieldName: `gcms`,
-        url: `https://api-us-west-2.graphcms.com/v2/cke7lwawykh9w01xi3c8qavzk/master`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-duolingo`,
+    //   options: {
+    //     username: `ryan51574`,
+    //     identifier: process.env.DUOLINGO_IDENTIFIER,
+    //     password: process.env.DUOLINGO_PASSWORD,
+    //   },
+    // },
     `gatsby-plugin-offline`,
   ],
 }

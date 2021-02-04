@@ -1,25 +1,22 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
-import SEO from './seo'
+import Navbar from './navbar'
 
-export default ({ title = '', children }) => {
+export default ({ title, description, children }) => {
   return (
-    <div className="min-h-screen">
-      <SEO keywords={[`ryan`, `washburne`, `portfolio`]} title={title} />
-      <header className="container mx-auto text-xs pt-3 flex items-center">
-        <Link to="/" className="mr-4">
-          Home
-        </Link>
-        <Link to="/blog" className="mr-4">
-          Blog
-        </Link>
-        <Link to="/impossible">Impossible</Link>
-      </header>
-      <main>{children}</main>
-      {/* <footer className="mt-32 h-screen bg-red-100">
-        <p>Footer</p>
-      </footer> */}
+    <div className="min-h-screen pt-8 lg:pt-16 pb-16 px-4 lg:px-0">
+      <Navbar />
+      <main className="max-w-lg mx-auto">
+        <div className="mb-16 lg:mb-24">
+          <h1 className="text-4xl lg:text-5xl font-bold">{title}</h1>
+          {description && (
+            <p className="text-black text-opacity-50 text-lg lg:text-xl">
+              {description}
+            </p>
+          )}
+        </div>
+        {children}
+      </main>
     </div>
   )
 }

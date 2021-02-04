@@ -5,40 +5,24 @@ import { motion } from 'framer-motion'
 
 import { ArrowDown, GitHub, Linkedin, Send } from 'react-feather'
 
-import Animated from '../components/animate'
+import SEO from '../components/seo'
+import Navbar from '../components/navbar'
 
-const STAGGER_DURATION = 1.2
+const STAGGER_DURATION = 0.7
 const DURATION = 1
 
 export default () => {
   const {
-    me: {
+    file: {
       childImageSharp: { fluid },
     },
-    gcms: { projects, works },
   } = useStaticQuery(graphql`
-    query {
-      me: file(relativePath: { eq: "me.JPG" }) {
+    query IndexPage {
+      file(relativePath: { eq: "me.JPG" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
           }
-        }
-      }
-      gcms: gcms {
-        projects {
-          title
-          url
-          start
-          end
-          tags
-        }
-        works {
-          company
-          position
-          start
-          end
-          tags
         }
       }
     }
@@ -60,11 +44,10 @@ export default () => {
   ]
 
   return (
-    <div className="relative">
-      <div
-        className="lg:h-screen animated bg-gradient-to-br from-primary to-accent text-white relative flex items-center"
-        style={{ minHeight: 600 }}
-      >
+    <main>
+      <SEO keywords={[`ryan`, `washburne`, `portfolio`]} title="Home" />
+      <Navbar />
+      <section className="py-32 lg:py-0 h-screen animated bg-gradient-to-br from-primary to-accent text-white relative flex items-center">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 h-full">
           <div className="flex items-center justify-center text-center lg:text-left">
             <motion.div
@@ -88,9 +71,9 @@ export default () => {
                   start: { opacity: 0, x: -25 },
                   end: { opacity: 1, x: 0 },
                 }}
-                transition={{ ease: 'easeOut', duration: DURATION }}
+                transition={{ ease: 'easeInOut', duration: DURATION }}
               >
-                <h1 className="text-3xl lg:text-6xl font-bold">
+                <h1 className="text-4xl lg:text-5xl font-bold">
                   <span className="bg-clip-text text-transparent bg-gradient-to-br from-indigo-200 to-orange-300">
                     Ryan Washburne
                   </span>
@@ -102,9 +85,9 @@ export default () => {
                   start: { opacity: 0, x: -25 },
                   end: { opacity: 1, x: 0 },
                 }}
-                transition={{ ease: 'easeOut', duration: DURATION }}
+                transition={{ ease: 'easeInOut', duration: DURATION }}
               >
-                <h3 className="text-xl lg:text-2xl">Analyst at Deloitte</h3>
+                <h4 className="text-xl lg:text-2xl">Analyst at Deloitte</h4>
               </motion.div>
 
               <motion.div
@@ -131,11 +114,11 @@ export default () => {
                     <motion.div
                       key={i}
                       variants={{
-                        start: { opacity: 0 },
-                        end: { opacity: 1 },
+                        start: { opacity: 0, visibility: 'hidden' },
+                        end: { opacity: 1, visibility: 'visible' },
                       }}
                       transition={{
-                        ease: 'easeOut',
+                        ease: 'easeInOut',
                         duration: DURATION,
                       }}
                       className="mr-4 text-white"
@@ -153,10 +136,18 @@ export default () => {
           </div>
           <div className="flex items-center">
             <motion.div
-              animate={{
-                opacity: [0, 1],
-                x: [25, 0],
+              variants={{
+                start: {
+                  opacity: 0,
+                  x: 25,
+                },
+                end: {
+                  opacity: 1,
+                  x: 0,
+                },
               }}
+              initial="start"
+              animate="end"
               transition={{
                 delay: STAGGER_DURATION * 2,
                 duration: DURATION,
@@ -181,42 +172,45 @@ export default () => {
             <ArrowDown size={32} />
           </motion.div>
         </div>
-      </div>
-      <section className="container mx-auto my-16">
-        <h3 className="sticky text-2xl font-bold mb-4 z-50" style={{ top: 5 }}>
-          Projects
-        </h3>
-        {projects.map(({ title, url, tags }, i) => {
-          return (
-            <Animated key={i} className="shadow p-4 mb-12">
-              <h3 className="text-xl lg:text-4xl font-bold break-words">
-                {title}
-              </h3>
-              <a href={url} className="block text-gray-600 mb-4">
-                Website
-              </a>
-              <p className="uppercase text-xs">{tags.join(', ')}</p>
-            </Animated>
-          )
-        })}
-        <h3 className="sticky text-2xl font-bold mb-4 z-50" style={{ top: 5 }}>
-          Work
-        </h3>
-        {works.map(({ company, position, tags }, i) => {
-          return (
-            <Animated key={i} className="shadow p-4 mb-12">
-              <h3 className="text-xl lg:text-4xl font-bold break-words">
-                {company}
-              </h3>
-              <p className="text-gray-600 mb-4">{position}</p>
-              <p className="uppercase text-xs">{tags.join(', ')}</p>
-            </Animated>
-          )
-        })}
       </section>
-      <footer className="py-8 bg-black text-white text-center text-sm">
-        <p>Made with &lt;3 by Ryan</p>
-      </footer>
-    </div>
+      {/* Porfolio */}
+      <section className="pb-6 pt-8" />
+      {/* <section className="py-32">
+        <div className="container mx-auto">
+          <h3 className="text-2xl font-bold mb-16 z-50">Projects</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-32">
+            {[].map(({ title, url, tags }, i) => {
+              return (
+                <Animate key={i}>
+                  <div className="shadow p-6 mb-12 bg-white">
+                    <h3 className="text-lg lg:text-xl break-words">{title}</h3>
+                    <p className="mb-4 mt-2">
+                      <a href={url} className="text-gray-600">
+                        Website
+                      </a>
+                    </p>
+                    <p className="uppercase text-xs">{tags.join(', ')}</p>
+                  </div>
+                </Animate>
+              )
+            })}
+          </div>
+          <h3 className="text-2xl font-bold mb-4 z-50">Work</h3>
+          {[].map(({ company, position, tags }, i) => {
+            return (
+              <Animate key={i}>
+                <div className="shadow p-4 mb-12 bg-white text-black rounded">
+                  <h4 className="text-xl lg:text-4xl font-bold break-words bg-clip-text text-transparent bg-gradient-to-br bg-clip-text text-transparent from-primary-light to-accent-light">
+                    {company}
+                  </h4>
+                  <p className="text-gray-600 mb-4">{position}</p>
+                  <p className="uppercase text-xs">{tags.join(', ')}</p>
+                </div>
+              </Animate>
+            )
+          })}
+        </div>
+      </section> */}
+    </main>
   )
 }

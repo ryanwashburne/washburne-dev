@@ -13,8 +13,7 @@ module.exports = {
       },
     }),
     fontFamily: {
-      sans: ['Montserrat'],
-      serif: ['Prata'],
+      sans: ['Kumbh Sans', 'Helvetica', 'Arial'],
     },
     extend: {
       colors: {

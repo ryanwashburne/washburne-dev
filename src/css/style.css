@@ -5,31 +5,23 @@ html {
   @apply font-sans;
   scroll-behavior: smooth;
 }
-a {
-  @apply underline;
-  @apply text-gray-600;
-}
-a:hover {
-  @apply text-gray-700;
+
+h1,
+h2,
+h3 {
+  @apply tracking-widest;
+  @apply font-bold;
+  @apply font-sans;
 }
 
 @tailwind components;
 
-.animated {
-  /* background-size: 200%; */
-  /* animation: gradient 8s ease infinite; */
+.link {
+  @apply underline;
+  @apply text-gray-600;
 }
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.link:hover {
+  @apply text-gray-700;
 }
 
 /*! purgecss end ignore */
