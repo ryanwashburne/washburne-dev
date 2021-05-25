@@ -87,7 +87,9 @@ export default () => {
                 }}
                 transition={{ ease: 'easeInOut', duration: DURATION }}
               >
-                <h4 className="text-xl lg:text-2xl">Analyst at Deloitte</h4>
+                <h4 className="text-xl lg:text-2xl">
+                  Front End Engineer @ AWS
+                </h4>
               </motion.div>
 
               <motion.div
