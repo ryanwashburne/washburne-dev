@@ -10,6 +10,26 @@ const {title} = Astro.props;
 		<meta name="description" content="Personal website for Ryan Washburne.">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title} &#183; Ryan Washburne</title>
+		<style is:global>
+			@font-face {
+				font-family: 'Moderat';
+				src: url('/fonts/Moderat-Thin.woff') format('woff');
+				font-weight: normal;
+				font-style: normal;
+			}
+			@font-face {
+				font-family: 'Moderat';
+				src: url('/fonts/Moderat-Bold.woff') format('woff');
+				font-weight: bold;
+				font-style: normal;
+			}
+			@font-face {
+				font-family: 'Moderat';
+				src: url('/fonts/Moderat-Thin-Italic.woff') format('woff');
+				font-weight: normal;
+				font-style: italic;
+			}
+		</style>
 	</head>
 	<body>
     <nav class="md:float-right text-right mt-8 mr-8">
