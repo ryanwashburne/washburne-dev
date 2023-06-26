@@ -1,0 +1,21 @@
+---
+import Layout from '../components/Layout.astro';
+import Link from '../components/Link.astro'
+import {Image} from '@astrojs/image/components'
+import selfie from '../assets/self_bw.jpeg'
+---
+
+<Layout title="About">
+  <div class="flex flex-col gap-4">
+    <Image src={selfie} alt="aa" width={200} height={200} />
+    <p>I currently live in California and work at Stripe. I grew up in Portland and previously studied at the University of Washington.</p>
+    <p>Email: <Link href="mailto:ryan.washburne@gmail.com">ryan.washburne@gmail.com</Link></p>
+    <p>Things I'm involved with and areas of interest:</p>
+    <ul class="list-disc list-inside">
+      <li><b>Newsletters.</b> I created <Link href="https://newslettertokindle.com/">Newsletter to Kindle</Link> orignially as a personal project, but later provided the service for free (and paid) to share with hundreds of users.</li>
+      <li><b>Men&apos;s fashion.</b> I&apos;m starting to work on an AI product for providing fashion advice for a man&apos;s wardrobe.</li>
+    </ul>
+    <h2 class="text-lg font-bold mt-4">Elsewhere</h2>
+    <p><Link href="https://github.com/ryanwashburne">ryanwashburne</Link> on Github; <Link href="https://twitter.com/ryanwashburne">ryanwashburne</Link> on Twitter.</p>
+  </div>
+</Layout>
